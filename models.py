@@ -1,9 +1,42 @@
 # -*- coding: utf-8 -*-
 from collections import Counter
-
 import utils
 
 __author__ = 'mkr'
+
+
+class User(object):
+    """ This class represents a simple user model.
+    """
+
+    def __init__(self, username):
+        self.username = username
+        self.token = None
+
+    @classmethod
+    def create(cls, username, token=None):
+        """ Creates and returns a created user based on provided username and token. If token was not provided,
+        then it is going to be generated automatically.
+        """
+
+        user = cls(username=username)
+        if token is None:
+            user.token = utils.generate_token()
+        else:
+            user.token = token
+        return user
+
+    @classmethod
+    def find_user_by_token(cls, token):
+        """ This is a simple method which is responsible for searching users based on provided token in mock list of users.
+        If user exists, then returns a User object, else None.
+        :param token string
+        :return User object or None
+        """
+
+        from mock import Mock
+        users = filter(lambda u: u.token == token, Mock.users)
+        return users[0] if len(users) == 1 else None
 
 
 class Result(object):

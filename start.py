@@ -4,6 +4,7 @@
 from bottle import route, run, request
 from models import Word, Joke
 from utils import errorhandler
+from auth import login_required
 
 __author__ = 'mkr'
 
@@ -16,6 +17,7 @@ def index():
 
 @route("/random_word")
 @errorhandler
+@login_required
 def random_word():
     """ This method serves a meaning of random word from Wikipedia in JSON format. """
 
@@ -25,6 +27,7 @@ def random_word():
 
 @route("/statistic/<limit:int>")
 @errorhandler
+@login_required
 def statistics(limit):
     """ This method serves a statistic of most popular randomly selected words."""
 
@@ -34,6 +37,7 @@ def statistics(limit):
 
 @route("/joke")
 @errorhandler
+@login_required
 def joke():
     """ This method serves a random joke. """
 

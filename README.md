@@ -60,6 +60,16 @@ Content-Type: application/json
 }
 ```
 
+## Mocked users' data
+```
+username "user1", token='52ba1bd6255e81ae8de725dbf46f217743c302f4'
+username="user2", token='3d361f0042faf1751d1b1d561e22bbcecc8198ae'
+username="user3", token='907a7400146b2a4c27ec7f49fb3952dfb55a6e7f'
+username="user4", token='e80f6ef9785b003f286dfbdcdadf80eaa8f59b8c'
+username="user5", token='bffa00ecae58dab1e85313fa9f7968164424792b'
+username="user6", token='86320f899fa096b53252e103c5956bc46f348061'
+```
+
 ## API endpoints
 
 ### Random word
@@ -80,7 +90,7 @@ This endpoint returns a meaning of random word fetched from Wikipedia in JSON fo
 
 #### cURL request example
 ```
-curl -i -H "Content-Type: application/json" -XGET "http://localhost:8080/random_word"
+curl -i -H "Content-Type: application/json" -H "Authorization: e80f6ef9785b003f286dfbdcdadf80eaa8f59b8c" -XGET "http://localhost:8080/random_word"
 ```
 
 ### Statistics
@@ -104,7 +114,7 @@ This endpoint returns a statistic of most popular randomly selected words.
 
 ### cURL request example
 ```
-curl -i -H "Content-Type: application/json" -XGET "http://localhost:8080/statistic/10"
+curl -i -H "Content-Type: application/json" -H "Authorization: e80f6ef9785b003f286dfbdcdadf80eaa8f59b8c" -XGET "http://localhost:8080/statistic/10"
 ```
 
 
@@ -125,5 +135,5 @@ all request params are optional.
 
 ### cURL request example
 ```
-curl -i -H "Content-Type: application/json" -XGET "http://localhost:8080/joke"
+curl -i -H "Content-Type: application/json" -H "Authorization: e80f6ef9785b003f286dfbdcdadf80eaa8f59b8c" -XGET "http://localhost:8080/joke"
 ```

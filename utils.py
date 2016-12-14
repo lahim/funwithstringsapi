@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
+import os
+import binascii
 import requests
-from bottle import response
-
 import settings
+
+from bottle import response
 
 __author__ = 'mkr'
 
@@ -101,6 +103,14 @@ def get_joke(first_name=None, last_name=None):
         if data["type"] == "success":
             return data["value"]["joke"]
         return None
+
+
+def generate_token(length=20):
+    """ Generates token.
+    :param length: Generates token of selected length (default 20)
+    :return: token
+    """
+    return binascii.hexlify(os.urandom(length)).decode()
 
 
 def errorhandler(func):
